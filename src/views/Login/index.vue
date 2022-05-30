@@ -5,7 +5,6 @@
         <div>
           <img src="@/assets/logo.png" alt="" width="120px">
         </div>
-        
       </el-aside>
       <el-container>
         <el-main>Main</el-main>

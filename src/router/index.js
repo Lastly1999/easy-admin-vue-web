@@ -5,13 +5,20 @@ import { permissionRouteIntercept } from "./helps/intercept"
 
 Vue.use(VueRouter)
 
-const redirectUrl = "/base/login/index"
+// 重定向url
+const redirectUrl = "/main/base/login/index"
+// 重定向----route栈
 const redirectPath = { path: '/', redirect: redirectUrl }
+// 登录页----route栈
+const loginRoute = { path: `/login`, name: "login", component: () => import("@/views/Login") }
+
+console.log(`当前路由栈:`, registerRoutes)
 
 const router = new VueRouter({
   mode: "history",
   routes: [
     ...registerRoutes,
+    loginRoute,
     redirectPath,
   ]
 })

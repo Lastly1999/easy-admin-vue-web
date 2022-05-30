@@ -1,6 +1,7 @@
 import Vue from "vue"
+import LayoutComponent from "@/layout"
 
-const requireComponent = require.context('@/views', true, /index.vue$/) // 找到views路径下的所有文件
+const requireComponent = require.context('@/views/Base', true, /index.vue$/) // 找到views路径下的所有文件
 const routes = requireComponent.keys().filter(fileName => {
 	if (fileName === './index.vue') { // 过滤掉父节点的路由
 		return false
@@ -14,9 +15,16 @@ const routes = requireComponent.keys().filter(fileName => {
 		const componentNameRe = componentName.replace(/\//g, '-') // 设置name为文件夹名-index
 		const component = Vue.component(componentNameRe, componentConfig.default || componentConfig) // 根据路径注册成组件
 		const result = {
-			path: `/${componentName.toLowerCase()}`,
+			path: `/base`,
 			name: componentNameRe,
-			component
+			component: LayoutComponent,
+			children: [
+				{
+					path: `${componentName.toLowerCase()}`,
+					name: componentNameRe,
+					component
+				}
+			]
 		}
 		return result
 	})
