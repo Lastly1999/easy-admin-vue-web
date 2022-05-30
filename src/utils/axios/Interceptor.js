@@ -2,12 +2,12 @@ import axios from "axios"
 
 const axiosInstance = axios.create({
 	timeout: process.env.VUE_APP_API_TIME_OUT,
-	baseURL: process.env.VUE_APP_API_BASE_URL
+	baseURL: process.env.VUE_APP_BASE_URL
 })
 
 axiosInstance.interceptors.request.use(config => {
-	const userToken = localStorage.getItem("authorization")
-	config.headers['Authorization '] = userToken || null
+	// const userToken = localStorage.getItem("authorization")
+	// config.headers['Authorization '] = userToken || null
 	return config
 }, err => {
 	console.error(`request error:${err}`)

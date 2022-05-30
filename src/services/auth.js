@@ -5,3 +5,10 @@ export function loginAction() {
 		method: "GET",
 	})
 }
+
+export function getGraphic() {
+	return httpRequest({
+		url: "/auth/code",
+		method: "GET",
+	})
+}

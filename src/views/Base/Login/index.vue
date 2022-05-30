@@ -3,7 +3,12 @@
 </template>
 
 <script>
-export default {};
+import { getGraphic } from "@/services/auth";
+export default {
+  mounted() {
+    getGraphic();
+  },
+};
 </script>
 
 <style>
